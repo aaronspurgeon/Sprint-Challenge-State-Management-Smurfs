@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchSmurfs } from "../actions/smurfs";
+import SmurfList from "./SmurfList";
 import "./App.css";
 
 function App(props) {
@@ -10,10 +11,13 @@ function App(props) {
 
   return (
     <div className="App">
-      <h1>SMURFS! 2.0 W/ Redux</h1>
-      <div>Welcome to your state management version of Smurfs!</div>
-      <div>Start inside of your `src/index.js` file!</div>
-      <div>Have fun!</div>
+      <h2>
+        Welcome to the Smurf Village! Below you will find a list of all the
+        residents!
+      </h2>
+      {props.smurfArray.map(item => (
+        <SmurfList item={item} key={item.id} />
+      ))}
     </div>
   );
 }
