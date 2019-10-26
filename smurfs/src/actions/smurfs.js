@@ -20,18 +20,25 @@ export function fetchSmurfs() {
   };
 }
 
-export const createSmurf = ({ name, height, age }) => {
+export function createSmurf(name, height, age) {
   return dispatch => {
-    return axios
-      .post("http://localhost:3333/smurfs", { name, height, age })
+    axios
+      .post("http://localhost:3333/smurfs", {
+        name: name,
+        height: height,
+        age: age
+      })
       .then(res => {
-        dispatch(createSmurfSuccess(res.data));
+        dispatch({
+          type: ADD_SMURF,
+          payload: res.data
+        });
       })
       .catch(err => {
         throw err;
       });
   };
-};
+}
 
 export const createSmurfSuccess = data => {
   return {

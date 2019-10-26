@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchSmurfs } from "../actions/smurfs";
+import { fetchSmurfs, createSmurf } from "../actions/smurfs";
 import SmurfList from "./SmurfList";
 import AddForm from "./AddForm";
 import "./App.css";
@@ -33,7 +33,8 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-  fetchSmurfs
+  fetchSmurfs,
+  createSmurf
 };
 
 export default connect(
