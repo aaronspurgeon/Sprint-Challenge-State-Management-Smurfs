@@ -12,7 +12,6 @@ export function fetchSmurfs() {
     axios
       .get("http://localhost:3333/smurfs")
       .then(res => {
-        console.log(res, "hello");
         dispatch({ type: FETCH_SMURFS_SUCCESS, payload: res.data });
       })
       .catch(err => {
