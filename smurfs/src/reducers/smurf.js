@@ -2,7 +2,8 @@ import {
   FETCH_SMURFS_START,
   FETCH_SMURFS_SUCCESS,
   FETCH_SMURFS_ERROR,
-  ADD_SMURF
+  ADD_SMURF,
+  DELETE_SMURF
 } from "../actions/smurfs";
 
 export const initialState = {
@@ -41,6 +42,12 @@ export function reducer(state = initialState, action) {
       return {
         ...state,
         smurfArray: action.payload
+      };
+    case DELETE_SMURF:
+      return {
+        ...state,
+        smurfArray: action.payload,
+        isLoading: false
       };
     default:
       return state;

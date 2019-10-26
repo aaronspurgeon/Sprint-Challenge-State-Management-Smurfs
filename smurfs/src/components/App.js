@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchSmurfs, createSmurf } from "../actions/smurfs";
+import { fetchSmurfs, createSmurf, deleteSmurf } from "../actions/smurfs";
 import SmurfList from "./SmurfList";
 import AddForm from "./AddForm";
 import "./App.css";
@@ -17,7 +17,7 @@ function App(props) {
         residents!
       </h2>
       {props.smurfArray.map(item => (
-        <SmurfList item={item} key={item.id} />
+        <SmurfList item={item} key={item.id} deleteSmurf={props.deleteSmurf} />
       ))}
       <AddForm />
     </div>
@@ -34,7 +34,8 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
   fetchSmurfs,
-  createSmurf
+  createSmurf,
+  deleteSmurf
 };
 
 export default connect(

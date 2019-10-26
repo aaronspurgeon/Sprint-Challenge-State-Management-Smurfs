@@ -4,6 +4,7 @@ export const FETCH_SMURFS_START = "FETCH_SMURFS_START";
 export const FETCH_SMURFS_SUCCESS = "FETCH_SMURFS_SUCCESS";
 export const FETCH_SMURFS_ERROR = "FETCH_SMURFS_ERROR";
 export const ADD_SMURF = "ADD_SMURF";
+export const DELETE_SMURF = "DELETE_SMURF";
 
 export function fetchSmurfs() {
   return dispatch => {
@@ -40,14 +41,18 @@ export function createSmurf(name, height, age) {
   };
 }
 
-export const createSmurfSuccess = data => {
-  return {
-    type: ADD_SMURF,
-    payload: {
-      _id: data._id,
-      name: data.name,
-      height: data.height,
-      age: data.age
-    }
+export function deleteSmurf(id) {
+  return dispatch => {
+    axios
+      .delete(`http://localhost:3333/smurfs/${id}`)
+      .then(res => {
+        dispatch({
+          type: DELETE_SMURF,
+          payload: res.data
+        });
+      })
+      .catch(err => {
+        throw err;
+      });
   };
-};
+}
