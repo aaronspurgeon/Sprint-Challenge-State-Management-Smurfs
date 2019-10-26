@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchSmurfs } from "../actions/smurfs";
 import SmurfList from "./SmurfList";
+import AddForm from "./AddForm";
 import "./App.css";
 
 function App(props) {
@@ -18,6 +19,7 @@ function App(props) {
       {props.smurfArray.map(item => (
         <SmurfList item={item} key={item.id} />
       ))}
+      <AddForm />
     </div>
   );
 }
